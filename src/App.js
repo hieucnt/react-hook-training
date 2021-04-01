@@ -3,34 +3,39 @@ import "./App.scss";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todoList, setTodoList] = useState([
+  const [todoList, setItem] = useState([
     {
       id: 1,
-      title: "I love you",
+      title: "abc",
     },
     {
       id: 2,
-      title: "I love you 3000",
+      title: "abcd",
     },
     {
       id: 3,
-      title: "We love you",
+      title: "abce",
+    },
+    {
+      id: 4,
+      title: "abcf",
     },
   ]);
 
-  function handleTodoClick(todo) {
+  function handleOnClick(todo) {
     console.log(todo);
     const index = todoList.findIndex((x) => x.id === todo.id);
-
     if (index < 0) return;
+
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
-    setTodoList(newTodoList);
+    setItem(newTodoList);
   }
   return (
     <div className="app">
       <h1>React Hooks- TodoList</h1>
-      <TodoList todos={todoList} onTodoClick={handleTodoClick} />
+
+      <TodoList todos={todoList} onTodoClick={handleOnClick} />
     </div>
   );
 }
